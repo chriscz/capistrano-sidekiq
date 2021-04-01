@@ -64,7 +64,7 @@ namespace :sidekiq do
         else
           execute :systemctl, "--user", "disable", fetch(:sidekiq_service_unit_name)
         end
-        execute :rm, '-f', File.join(fetch(:service_unit_path, fetch_systemd_unit_path), fetch(:sidekiq_service_unit_name))
+        execute :rm, '-f', File.join(fetch(:service_unit_path, git_plugin.fetch_systemd_unit_path), fetch(:sidekiq_service_unit_name))
       end
     end
   end
