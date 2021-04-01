@@ -24,6 +24,10 @@ module Capistrano
       end.join(' ')
     end
 
+    def expanded_bundle_command
+      backend.capture(:echo, SSHKit.config.command_map[:bundle]).strip
+    end
+
     def sidekiq_logfile
       fetch(:sidekiq_log)
     end

@@ -73,6 +73,6 @@ exec /bin/bash <<'EOT'
   # Logs out to /var/log/upstart/<%= fetch(:sidekiq_service_unit_name) %>.log by default
 
   cd <%= File.join(fetch(:deploy_to), 'current') %>
-  exec <%= SSHKit.config.command_map[:bundle] %> exec sidekiq -e <%= fetch(:sidekiq_env) %> <%= sidekiq_config %> <%= sidekiq_concurrency %> <%= sidekiq_queues %>
+  exec <%= expanded_bundle_command %> exec sidekiq -e <%= fetch(:sidekiq_env) %> <%= sidekiq_config %> <%= sidekiq_concurrency %> <%= sidekiq_queues %>
 EOT
 end script
